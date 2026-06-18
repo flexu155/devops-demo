@@ -1,11 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-    <title>DevOps Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps CI/CD Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            max-width: 700px;
+            margin: auto;
+            background: #1f2937;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #22c55e;
+        }
+
+        .status {
+            font-size: 24px;
+            margin: 20px;
+        }
+
+        .item {
+            margin: 10px;
+            font-size: 18px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>Moja pierwsza aplikacja DevOps</h1>
+<div class="box">
+
+    <h1> CI/CD Pipeline działa!</h1>
+
+    <div class="status">
+        Deployment zakończony sukcesem 
+    </div>
+
+    <div class="item">
+         GitHub Actions: OK
+    </div>
+
+    <div class="item">
+         Docker Build: OK
+    </div>
+
+    <div class="item">
+         Docker Hub Push: OK
+    </div>
+
+    <div class="item">
+         SSH Deployment: OK
+    </div>
+
+    <div class="item">
+         Ubuntu Server: ONLINE
+    </div>
+
+    <div class="item">
+         Automatic Restart Policy: ENABLED
+    </div>
+
+    <br>
+
+    <h2>DevOps Demo Application</h2>
+
+    <p>
+        Ta strona została wdrożona automatycznie przez pełny pipeline CI/CD.
+    </p>
+
+    <p>
+        Każdy git push uruchamia proces:
+    </p>
+
+    <p>
+        GitHub → Docker → Docker Hub → SSH → Ubuntu → Production 🚀
+    </p>
+
+</div>
 
 </body>
 </html>
