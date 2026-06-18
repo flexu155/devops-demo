@@ -8,17 +8,28 @@ on:
 
 jobs:
   deploy:
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to VM via SSH
+      - name: Deploy to Ubuntu VM via SSH
         uses: appleboy/ssh-action@v1.0.3
+
         with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+
           script: |
-            docker pull ${{ secrets.DOCKERHUB_USER }}/devops-demo:latest
-            docker stop app || true
-            docker rm app || true
-            docker run -d --name app -p 80:80 ${{ secrets.DOCKERHUB_USER }}/devops-demo:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devops-demo:latest
+
+            docker stop devops-demo || true
+
+            docker rm devops-demo || true
+
+            docker run -d \
+              --name devops-demo \
+              -p 8080:80 \
+              ${{ secrets.DOCKERHUB_USERNAME }}/devops-demo:latest
